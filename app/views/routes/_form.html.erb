@@ -1,0 +1,15 @@
+<%= form_for(@route) do |f| %>
+<%= render 'common/errors', resource: @route %>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :railway_stations %><br>
+    <%#= f.select :railway_stations, RailwayStation.all.collect {|x| [x.title, x.id]}, {}, :multiple => true %>
+    <%= f.collection_check_boxes :railway_station_ids, RailwayStation.all, :id, :title,  include_hidden: false%>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

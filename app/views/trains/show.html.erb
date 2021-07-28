@@ -1,8 +1,16 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Number:</strong>
+  <strong>Номер:</strong>
   <%= @train.number %>
+</p>
+<p>
+  <strong> На Станції:</strong>
+  <% if @train.railway_station.present? %>
+    <%= @train.railway_station.title %>
+  <% else %>
+    Не вказано
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_train_path(@train) %> |

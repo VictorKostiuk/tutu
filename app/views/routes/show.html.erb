@@ -4,6 +4,12 @@
   <strong>Name:</strong>
   <%= @route.name %>
 </p>
+<p>
+  <strong>RailwayStations:</strong>
+  <% @route.railway_stations.each do |railway_station| %>
+    <%= railway_station.title %>
+  <% end %>
+</p>
 
 <%= link_to 'Edit', edit_route_path(@route) %> |
 <%= link_to 'Back', routes_path %>
