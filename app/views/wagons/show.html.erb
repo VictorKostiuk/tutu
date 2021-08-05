@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Номер:</strong>
+  <%= @wagon.count_top_places %>
+  <%= @wagon.count_bottom_places %>
+</p>
+<p>
+  <strong> Належить поїзду:</strong>
+  <% if @wagon.train.present? %>
+    <%= @wagon.train.number %>
+  <% else %>
+    Не вказано
+  <% end %>
+</p>
+
+
+<%= link_to 'Edit', edit_wagon_path(@wagon) %> |
+<%= link_to 'Back', wagons_path %>
