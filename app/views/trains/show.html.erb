@@ -13,5 +13,45 @@
   <% end %>
 </p>
 
-<%= link_to 'Edit', edit_train_path(@train) %> |
+<p>
+  <strong> На маршуті:</strong>
+  <% if @train.route.present? %>
+    <%= @train.route.name %>
+  <% else %>
+    Не вказано
+  <% end %>
+</p>
+
+<p>
+  <br>
+  <strong>Загальна кількість вагонів:</strong>
+  <%= @train.wagons.count() %>
+  <br>
+  <strong>Загальна кількість купейних вагонів:</strong>
+  <%= @train.wagons.cargo.count() %>
+  <%= count_top_places(@train.wagons.cargo) %>
+  <%= count_bottom_places(@train.wagons.cargo) %>
+  <br>
+  <strong>Загальна кількість плацкартних вагонів:</strong>
+  <%= @train.wagons.seat_card.count() %>
+  <%= count_top_places(@train.wagons.seat_card) %>
+  <%= count_bottom_places(@train.wagons.seat_card) %>
+</p>
+
+<p>
+  <strong> Вагони:</strong>
+  <% if @train.wagons.present? %>
+
+    <% @train.wagons.each do |wagon| %>
+    <br>
+      <%= wagon.wagon_type %>
+      <%= wagon.count_top_places %>
+      <%= wagon.count_bottom_places %>
+    <% end %>
+  <% else %>
+    Не вказано
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_train_path(@train) %>
 <%= link_to 'Back', trains_path %>

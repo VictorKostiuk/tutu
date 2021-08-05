@@ -1,0 +1,29 @@
+<%= form_for(@wagon) do |f| %>
+  <%= render 'common/errors', resource: @wagon %>
+
+  <div class="field">
+    <%= f.label :count_top_places %><br>
+    <%= f.number_field :count_top_places %>
+  </div>
+
+  <div class="field">
+    <%= f.label :count_bottom_places %><br>
+    <%= f.number_field :count_bottom_places %>
+  </div>
+
+  <div class="select">
+
+      <%= f.label :wagon_type %>
+      <%= f.select :wagon_type,  options_for_select(Wagon.wagon_types.map {|key, value| [key.titleize, Wagon.wagon_types.key(value)]}, @wagon.wagon_type) %>
+
+  </div>
+
+  <div class="field">
+    <%= f.label :train_id, "Поточний поїзд" %>
+    <%= f.collection_select :train_id, Train.all, :id, :number %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

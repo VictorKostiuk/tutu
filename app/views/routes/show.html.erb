@@ -11,5 +11,16 @@
   <% end %>
 </p>
 
+<p>
+  <strong> Список поїздів:</strong>
+  <% if @route.trains.present? %>
+    <% @route.trains.each do |train|%>
+      <%= train.number %>
+    <% end %>
+  <% else %>
+    Не вказано
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_route_path(@route) %> |
 <%= link_to 'Back', routes_path %>
