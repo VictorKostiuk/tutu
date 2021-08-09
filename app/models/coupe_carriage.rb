@@ -1,0 +1,3 @@
+class CoupeCarriage < Wagon
+
+end
